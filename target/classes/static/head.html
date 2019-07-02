@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap/css/bootstrap.min.css"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="jumbotron" style="background-image: url(http://img.1ppt.com/uploads/allimg/1605/4_160506151207_1.jpg)">
+        <div class="container" style="text-align: center">
+            <h1>优课达会议室智能管理系统</h1>    
+            <p>更快速的会议室解决方案</p>       
+        </div>
+</div>
+<div style="padding: 10px 10px 10px; text-align: center">
+    <form class="bs-example bs-example-form" role="form" method="post">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">请输入会议室号</span>
+            <input  id="code" type="text" class="form-control">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">请输入会议室人数</span>
+            <input id="capacities" type="text" class="form-control">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">结果</span>
+            <input id="result" type="text" class="form-control">
+        </div>
+        <button type="submit" id="check" class="btn btn-primary btn-lg" onclick="f()">确定</button>
+    </form>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+    var code = $("#code").val;
+    var capacities = $("#capacities").val;
+
+    console.log(code);
+    console.log(capacities);
+
+
+    function f() {
+
+        var code = $("#code").val();
+        var capacities = $("#capacities").val();
+
+        console.log(code);
+        console.log(capacities);
+
+        $.ajax({
+            url:"/compute",
+            type:"POST",
+            data:{
+                code:code,
+                capacities:capacities
+            },
+            dataType:"json",
+            success:function (data) {
+                    if (data.status === '成功'){
+                        alert(data.data);
+                        $("#result").text(data.data)
+                    }
+            },
+            error:function () {
+                
+            }
+        })
+    }
+
+
+</script>
+</html>
