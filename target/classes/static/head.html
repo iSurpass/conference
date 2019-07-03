@@ -49,31 +49,59 @@
         var code = $("#code").val();
         var capacities = $("#capacities").val();
 
-        var pattern = (10|[1-9])-(10|[1-9])-(10|[1-9]);
+        var pattern = /(10|[1-9])-(10|[1-9])-(10|[1-9])$/;
+
+        if (pattern.test(code)){
+
+            console.log("33333")
+            $.ajax({
+                url:"/compute",
+                type:'post',
+                data:{
+                    code:code,
+                    capacities:capacities
+                },
+                success:function (data) {
+                    /* alert("会议室号为："+data.data);
+                     window.location.href="head.html"*/
+                    if (data.status === '成功'){
+                        alert("会议室号为："+data.data);
+                        window.location.href="head.html"
+                    }
+                },
+                error:function () {
+
+                }
+            })
+        } else {
+            console.log("ssss")
+            alert("请输入正确会议室号");
+            return;
+        }
 
 
         console.log(code);
         console.log(capacities);
 
-        $.ajax({
-            url:"/compute",
-            type:'post',
-            data:{
-                code:code,
-                capacities:capacities
-            },
-            success:function (data) {
-                /* alert("会议室号为："+data.data);
-                 window.location.href="head.html"*/
-                   if (data.status === '成功'){
-                         alert("会议室号为："+data.data);
-                         window.location.href="head.html"
-                     }
-            },
-            error:function () {
-                
-            }
-        })
+        // $.ajax({
+        //     url:"/compute",
+        //     type:'post',
+        //     data:{
+        //         code:code,
+        //         capacities:capacities
+        //     },
+        //     success:function (data) {
+        //         /* alert("会议室号为："+data.data);
+        //          window.location.href="head.html"*/
+        //            if (data.status === '成功'){
+        //                  alert("会议室号为："+data.data);
+        //                  window.location.href="head.html"
+        //              }
+        //     },
+        //     error:function () {
+        //
+        //     }
+        // })
     }
 
 
