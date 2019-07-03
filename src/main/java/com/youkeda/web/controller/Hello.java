@@ -4,16 +4,13 @@ import com.youkeda.web.result.Result;
 import com.youkeda.web.utils.HandleData;
 import com.youkeda.web.vo.DataVo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Juniors
  */
-@Controller
+@RestController
 public class Hello {
 
     @RequestMapping(path = "/hello")
@@ -31,8 +28,10 @@ public class Hello {
 
         System.out.println(code);
         int des = HandleData.handle(code);
+
         result.setStatus("成功");
         result.setData(String.valueOf(des));
+
 
         return result;
     }

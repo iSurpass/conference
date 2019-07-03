@@ -18,7 +18,7 @@
         </div>
 </div>
 <div style="padding: 10px 10px 10px; text-align: center">
-    <form class="bs-example bs-example-form" role="form" method="post">
+    <form class="bs-example bs-example-form" role="form" >
         <div class="input-group input-group-lg">
             <span class="input-group-addon">请输入会议室号</span>
             <input  id="code" type="text" class="form-control">
@@ -29,11 +29,7 @@
             <input id="capacities" type="text" class="form-control">
         </div>
         <br>
-        <div class="input-group input-group-lg">
-            <span class="input-group-addon">结果</span>
-            <input id="result" type="text" class="form-control">
-        </div>
-        <button type="submit" id="check" class="btn btn-primary btn-lg" onclick="f()">确定</button>
+        <button type="button" id="check" class="btn btn-primary btn-lg" onclick="f()">确定</button>
     </form>
 </div>
 
@@ -53,22 +49,26 @@
         var code = $("#code").val();
         var capacities = $("#capacities").val();
 
+        var pattern = (10|[1-9])-(10|[1-9])-(10|[1-9]);
+
+
         console.log(code);
         console.log(capacities);
 
         $.ajax({
             url:"/compute",
-            type:"POST",
+            type:'post',
             data:{
                 code:code,
                 capacities:capacities
             },
-            dataType:"json",
             success:function (data) {
-                    if (data.status === '成功'){
-                        alert(data.data);
-                        $("#result").text(data.data)
-                    }
+                /* alert("会议室号为："+data.data);
+                 window.location.href="head.html"*/
+                   if (data.status === '成功'){
+                         alert("会议室号为："+data.data);
+                         window.location.href="head.html"
+                     }
             },
             error:function () {
                 

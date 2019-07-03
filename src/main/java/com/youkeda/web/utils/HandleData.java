@@ -5,9 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * JSON 解析数据工具类
@@ -52,8 +50,10 @@ public class HandleData {
 
         }
         int des = (int) maps.get(code).get("capacity");
+
         return des;
     }
+
 
 //    public static void main(String[] args) {
 //
