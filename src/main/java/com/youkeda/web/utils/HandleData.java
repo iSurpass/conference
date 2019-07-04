@@ -55,6 +55,25 @@ public class HandleData {
         return des;
     }
 
+    public static String skr(String code){
+
+        String jsonData = readJsonFile("data.json");
+        JSONArray jsonArray = JSON.parseArray(jsonData);
+        Map<String,Map> maps = new HashMap<>();
+
+        for (Object o:jsonArray){
+            JSONObject object = (JSONObject) o;
+            Map jsomMap = object;
+            maps.put(((JSONObject) jsomMap).getString("code"),jsomMap);
+
+        }
+        System.out.println(code);
+        String des = (String) maps.get(code).get("name");
+
+        return des;
+    }
+
+
 
 //    public static void main(String[] args) {
 //

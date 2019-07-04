@@ -1,9 +1,10 @@
 package com.youkeda.web.controller;
 
 import com.youkeda.web.result.Result;
+import com.youkeda.web.service.HandleService;
 import com.youkeda.web.utils.HandleData;
 import com.youkeda.web.vo.DataVo;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 public class Hello {
+
+    @Autowired
+    HandleService handleService;
 
     @RequestMapping(path = "/hello")
     public ModelAndView hello(){
@@ -24,13 +28,14 @@ public class Hello {
     public Result compute(DataVo vo){
 
         String code = vo.getCode();
+        String capacities = vo.getCapacities();
         Result result = new Result();
 
-        System.out.println(code);
-        int des = HandleData.handle(code);
+        String des = handleService.task(code,capacities);
+        String name = HandleData.skr(des);
 
         result.setStatus("成功");
-        result.setData(String.valueOf(des));
+        result.setData(name);
 
         return result;
     }
