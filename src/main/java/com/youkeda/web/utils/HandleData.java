@@ -14,6 +14,12 @@ import java.util.*;
 public class HandleData {
 
 
+    /**
+     * 读取json文件
+     *
+     * @param fileName
+     * @return
+     */
     public static String readJsonFile(String fileName){
 
         String jsonStr = "";
@@ -38,6 +44,12 @@ public class HandleData {
         return null;
     }
 
+    /**
+     * 解析json数据
+     *
+     * @param code
+     * @return
+     */
     public static int handle(String code){
 
         String jsonData = readJsonFile("data.json");
@@ -55,6 +67,12 @@ public class HandleData {
         return des;
     }
 
+    /**
+     * 由会议室号查找会议室名字
+     *
+     * @param code
+     * @return
+     */
     public static String skr(String code){
 
         String jsonData = readJsonFile("data.json");

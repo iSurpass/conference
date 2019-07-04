@@ -23,6 +23,15 @@ public class HandleService {
 
     static final boolean FLAG = false;
 
+    /**
+     * 会议室推荐核心算法
+     *
+     * @param floor
+     * @param room
+     * @param need
+     * @param capacities
+     * @return
+     */
     public static Map<Integer,Integer> handle(int floor,int room,int need,int[][] capacities){
 
         Map<Integer,Integer> map = new HashMap<>();
@@ -76,7 +85,14 @@ public class HandleService {
 //    }
 
 
-
+    /**
+     * 为核心算法提供数据准备
+     * 并封装数据
+     *
+     * @param code
+     * @param capacities
+     * @return
+     */
     public String task(String code,String capacities){
 
         Map<Integer,int[][]> map = new HashMap<>();
