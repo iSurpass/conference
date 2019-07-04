@@ -32,7 +32,6 @@ public class Hello {
         result.setStatus("成功");
         result.setData(String.valueOf(des));
 
-
         return result;
     }
 
