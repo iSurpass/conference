@@ -3,11 +3,19 @@ package com.youkeda.web.service;
 import com.youkeda.web.utils.HandleData;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Juniors
  */
 @Service
 public class Handle {
+
+    static {
+
+
+    }
 
     static final int FLOOR_DISTANCE = 10;
 
@@ -15,26 +23,32 @@ public class Handle {
 
     static final boolean FLAG = false;
 
-    public String handle(String code,int floor,int room,int capacities){
+    public static Map<Integer,Integer> handle(int floor,int room,int need,int[][] capacities){
 
-        int cap = 0;
+        Map<Integer,Integer> map = new HashMap<>();
+        int des_min = 10;
+        int des;
+        for (int i = 0; i<10; i++){
 
-        if (floor == 1){
+            int ss = capacities[floor][i];
 
-            do {
-                cap = HandleData.handle(code);
-
-
-            }while (capacities > cap);
-            return null;
+            if (capacities[floor][i] > need){
+                des = Math.abs(room - i);
+                if (des < des_min){
+                    des_min = des;
+                    map.put(floor,i+1);
+                }
+            }
         }
-        return null;
+        return map;
     }
+
+
 
 
     public static void main(String[] args) {
 
-        String[][] strings = new String[10][10];
+        String[][] string1 = new String[10][10];
 
         int floor,room;
 
@@ -47,16 +61,18 @@ public class Handle {
                 room = j;
                 room++;
                 String des = "1-" + floor + "-" + room;
-                strings[i][j] = des;
+                string1[i][j] = des;
             }
         }
 
+        int[][] capacities1 = new int[10][10];
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){
-                System.out.println(strings[i][j]);
-//                System.out.println(HandleData.handle(strings[i][j]));
+                capacities1[i][j] = HandleData.handle(string1[i][j]);
             }
         }
+
+        System.out.println(handle(6,4,23,capacities1).get(6));
     }
 
 }
