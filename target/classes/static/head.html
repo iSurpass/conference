@@ -11,10 +11,10 @@
 </head>
 <body>
 
-<div class="jumbotron" style="background-image: url(http://img.1ppt.com/uploads/allimg/1605/4_160506151207_1.jpg)">
+<div class="jumbotron" style="background-image: url(star.jpg);background-repeat: no-repeat;background-size: cover;">
         <div class="container" style="text-align: center">
-            <h1>优课达会议室智能管理系统</h1>    
-            <p>更快速的会议室解决方案</p>       
+            <h1><strong><font color="white">优课达会议室智能管理系统</font></strong></h1>    
+            <h3><font color="white">更快速、更人性化的会议室解决方案</font></h3>       
         </div>
 </div>
 <div style="padding: 10px 10px 10px; text-align: center">
@@ -51,6 +51,11 @@
 
         var pattern = /(10|[1-9])-(10|[1-9])-(10|[1-9])$/;
 
+        if (capacities == null || capacities == undefined || capacities == ''){
+            alert("请重新输入会议室人数");
+            return;
+        }
+
         if (pattern.test(code)){
 
             $.ajax({
@@ -73,7 +78,6 @@
                 }
             })
         } else {
-            console.log("ssss")
             alert("请输入正确会议室号");
             return;
         }

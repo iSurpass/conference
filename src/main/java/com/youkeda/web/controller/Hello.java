@@ -31,8 +31,8 @@ public class Hello {
         String capacities = vo.getCapacities();
         Result result = new Result();
 
-        String des = handleService.task(code,capacities);
-        String name = HandleData.skr(des);
+        String name = handleService.task(code,capacities);
+        //String name = HandleData.skr(des);
 
         result.setStatus("成功");
         result.setData(name);
