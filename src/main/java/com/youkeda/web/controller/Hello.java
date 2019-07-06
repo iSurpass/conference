@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * 核心Controller类
+ *
  * @author Juniors
  */
 @RestController
@@ -32,16 +34,10 @@ public class Hello {
         Result result = new Result();
 
         String name = handleService.task(code,capacities);
-        //String name = HandleData.skr(des);
 
         result.setStatus("成功");
         result.setData(name);
 
         return result;
-    }
-
-    @RequestMapping(path = "/success")
-    public ModelAndView success(){
-        return new ModelAndView("redirect:success.html");
     }
 }

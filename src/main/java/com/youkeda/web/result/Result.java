@@ -1,6 +1,8 @@
 package com.youkeda.web.result;
 
 /**
+ * 前端返回数据封装
+ *
  * @author Juniors
  */
 public class Result {

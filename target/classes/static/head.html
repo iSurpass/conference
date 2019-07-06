@@ -56,6 +56,13 @@
             return;
         }
 
+        if (capacities > 30){
+
+            sleep(5000);
+            alert("抱歉系统无法为你推荐合适的会议室！");
+            return;
+        }
+
         if (pattern.test(code)){
 
             $.ajax({
@@ -83,28 +90,19 @@
         }
 
 
+        function sleep(numberMillis) {
+            var now = new Date();
+            var exitTime = now.getTime() + numberMillis;
+            while (true) {
+                now = new Date();
+                if (now.getTime() > exitTime)
+                    return;
+            }
+        }
+
+
         console.log(code);
         console.log(capacities);
-
-        // $.ajax({
-        //     url:"/compute",
-        //     type:'post',
-        //     data:{
-        //         code:code,
-        //         capacities:capacities
-        //     },
-        //     success:function (data) {
-        //         /* alert("会议室号为："+data.data);
-        //          window.location.href="head.html"*/
-        //            if (data.status === '成功'){
-        //                  alert("会议室号为："+data.data);
-        //                  window.location.href="head.html"
-        //              }
-        //     },
-        //     error:function () {
-        //
-        //     }
-        // })
     }
 
 

@@ -97,7 +97,7 @@ public class HandleData {
 
         String jsonData = readJsonFile("data.json");
         JSONArray jsonArray = JSON.parseArray(jsonData);
-        System.out.println(jsonArray);
+        //System.out.println(jsonArray);
         Map<String,Map> maps = new HashMap<>();
 
         for (Object o:jsonArray){
@@ -109,10 +109,10 @@ public class HandleData {
 //            System.out.println(jsomMap.get("capacity"));
 //            System.out.println(jsomMap.get("code"));
 //            System.out.println(jsomMap.get("name"));
-
-//            System.out.println("会议室容量:"+object.getInteger("capacity")+
-//                                "  会议室号:"+object.getString("code")+
-//                                "  会议室名称:"+object.getString("name"));
+//
+            System.out.println("会议室容量:"+object.getInteger("capacity")+
+                                "  会议室号:"+object.getString("code")+
+                                "  会议室名称:"+object.getString("name"));
 
         }
          //System.out.println(maps.get("4-9-2").get("capacity"));
